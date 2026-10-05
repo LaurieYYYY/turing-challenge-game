@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#06152f">
+    <meta name="description" content="A three-stage AI literacy game for Grade 5 and Grade 6 learners.">
+    <title>The Turing Challenge</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23071a3d'/%3E%3Cpath d='M16 18h32v28H16z' fill='none' stroke='%2338d9ff' stroke-width='4'/%3E%3Ccircle cx='25' cy='31' r='3' fill='%23f2c94c'/%3E%3Ccircle cx='39' cy='31' r='3' fill='%23f2c94c'/%3E%3Cpath d='M24 40h16M32 12v6' stroke='%23effbff' stroke-width='4' stroke-linecap='square'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body data-stage="start">
+    <a class="skip-link" href="#game">Skip to game</a>
+    <div class="world-grid" aria-hidden="true"></div>
+    <header class="topbar" aria-label="Game status">
+      <a class="brand" href="./" aria-label="The Turing Challenge, restart game">
+        <span class="brand-mark" aria-hidden="true">TC</span>
+        <span>The Turing Challenge</span>
+      </a>
+      <div id="hud" class="hud" hidden>
+        <span class="hud-chip"><span aria-hidden="true">★</span> <strong id="hud-score">0</strong><span class="hud-label"> / 90</span></span>
+        <span class="hud-chip"><span aria-hidden="true">◆</span> <strong id="hud-hints">3</strong><span class="hud-label"> hints</span></span>
+      </div>
+    </header>
+
+    <main id="game" class="game-shell" tabindex="-1" aria-busy="true">
+      <section class="loading-panel" aria-live="polite">
+        <div class="pixel-loader" aria-hidden="true"></div>
+        <p>Opening the Digital Library…</p>
+      </section>
+    </main>
+
+    <p id="live-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+
+    <dialog id="hint-dialog" class="hint-dialog" aria-labelledby="hint-dialog-title" aria-describedby="hint-dialog-copy">
+      <form method="dialog">
+        <span class="dialog-icon" aria-hidden="true">?</span>
+        <h2 id="hint-dialog-title">Use one hint?</h2>
+        <p id="hint-dialog-copy">You have <strong id="dialog-hint-count">3</strong> hints for the whole game.</p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" value="cancel">Save It</button>
+          <button id="confirm-hint" class="button button-primary" value="confirm">Use Hint</button>
+        </div>
+      </form>
+    </dialog>
+
+    <noscript>
+      <p class="fatal-error">JavaScript is needed to play The Turing Challenge.</p>
+    </noscript>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
