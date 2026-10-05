@@ -464,7 +464,7 @@
         {
           "id": "M2",
           "title": "The Barber Puzzle",
-          "puzzle": "A barber shaves every man in town who does not shave himself, and no one else. Who shaves the barber?",
+          "puzzle": "A barber shaves every man in town who does not shave himself, and no one else. Will he shave himself?",
           "media": {
             "type": "image",
             "path": "assets/images/m2-barber-puzzle.png",
@@ -850,7 +850,7 @@
       "respectReducedMotion": true
     },
     "imageError": {
-      "message": "This picture did not load. Please try again or ask an adult for help.",
+      "message": "This picture did not load. Please try again or ask a helper for help.",
       "retryButtonLabel": "Retry Image",
       "mustNotRevealAnswer": true
     }
