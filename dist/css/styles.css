@@ -698,6 +698,12 @@ a { color: var(--color-cyan-light); }
 
 .decision-block { display: grid; gap: .75rem; padding-top: 1rem; border-top: 1px solid rgba(140,235,255,.2); }
 .decision-block h2 { margin: 0; font-family: var(--font-body); font-size: 1.15rem; }
+.decision-step {
+  color: var(--stage-accent);
+  font: 800 .8rem/1.2 var(--font-display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 .decision-help { margin: -.3rem 0 0; color: var(--color-muted); font-size: .92rem; }
 .mystery-explanation { padding: 1.1rem; font-size: 1.05rem; line-height: 1.62; }
 

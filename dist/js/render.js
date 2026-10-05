@@ -90,12 +90,12 @@ function learningCard(question) {
     </section>`;
 }
 
-function feedback(cue, correct, reveal = "") {
-  const statusLabel = correct ? "Correct choice" : "Incorrect choice";
-  return `<div class="answer-feedback ${correct ? "is-correct" : "is-incorrect"}" role="status" tabindex="-1" data-focus-target>
+function feedback(cue, correct, reveal = "", label = "", className = "") {
+  const statusLabel = label || (correct ? "Correct choice" : "Incorrect choice");
+  return `<div class="answer-feedback ${correct ? "is-correct" : "is-incorrect"} ${className}" role="status" tabindex="-1" data-focus-target>
     <span class="feedback-mark" aria-hidden="true">${correct ? "✓" : "✕"}</span>
     <div class="feedback-copy">
-      <span class="feedback-label">${statusLabel}</span>
+      <span class="feedback-label">${escapeHtml(statusLabel)}</span>
       <strong>${escapeHtml(cue)}</strong>
       ${reveal ? `<p>${escapeHtml(reveal)}</p>` : ""}
     </div>
@@ -190,7 +190,8 @@ function renderLogicQuestion(content, state, stage, question) {
   const correctnessDecision = question.decisions.find((item) => item.id === "correctness");
   const sourceDecision = question.decisions.find((item) => item.id === "source");
   const complete = Boolean(correctness && source);
-  const allCorrect = complete && correctness.isCorrect && source.isCorrect;
+  const correctnessCue = correctness?.isCorrect ? "Good thinking!" : "Good try. Check the learning card.";
+  const sourceCue = source?.isCorrect ? "Good thinking!" : "Good try. Check the learning card.";
   return `
     ${statusBar(stage, state)}
     <div class="question-layout has-media">
@@ -203,19 +204,33 @@ function renderLogicQuestion(content, state, stage, question) {
         <h1 id="screen-title" tabindex="-1">Check the explanation</h1>
         <blockquote class="mystery-explanation">${escapeHtml(question.mysteryExplanation)}</blockquote>
         ${hintArea(content, state, question, Boolean(correctness))}
-        <div class="decision-block">
-          <h2>${escapeHtml(correctnessDecision.question)}</h2>
+        <div class="decision-block" aria-labelledby="correctness-title">
+          <span class="decision-step">Decision 1 · 5 points</span>
+          <h2 id="correctness-title">${escapeHtml(correctnessDecision.question)}</h2>
           ${choiceButtons(correctnessDecision.choices, "answer-correctness", correctness?.answer, Boolean(correctness))}
-          ${correctness ? feedback(correctness.isCorrect ? "Good thinking!" : "Good try. Keep checking.", correctness.isCorrect) : ""}
+          ${correctness ? feedback(
+            correctnessCue,
+            correctness.isCorrect,
+            "",
+            correctness.isCorrect ? "Correctness check: correct" : "Correctness check: incorrect",
+            "correctness-feedback"
+          ) : ""}
         </div>
-        ${correctness ? `<div class="decision-block source-decision" data-focus-target tabindex="-1">
-          <h2>${escapeHtml(sourceDecision.question)}</h2>
+        ${correctness ? `<div class="decision-block source-decision" data-focus-target tabindex="-1" aria-labelledby="source-title">
+          <span class="decision-step">Decision 2 · 5 points</span>
+          <h2 id="source-title">${escapeHtml(sourceDecision.question)}</h2>
           <p class="decision-help">Choose where the explanation itself came from.</p>
           ${choiceButtons(sourceDecision.choices, "answer-source", source?.answer, Boolean(source))}
+          ${source ? feedback(
+            sourceCue,
+            source.isCorrect,
+            "",
+            source.isCorrect ? "Source check: correct" : "Source check: incorrect",
+            "source-feedback"
+          ) : ""}
         </div>` : ""}
       </section>
     </div>
-    ${complete ? feedback(allCorrect ? "Good thinking! Both checks are complete." : "Good try. Check the learning card.", allCorrect) : ""}
     ${complete ? learningCard(question) : ""}
     ${complete ? `<div class="next-row">${button(state.currentQuestionIndex === stage.questions.length - 1 ? "Finish Stage" : "Next Question", "next-question", "button-primary button-large")}</div>` : ""}`;
 }

@@ -90,10 +90,20 @@ root.addEventListener("click", (event) => {
       if (result) render({ announce: result.isCorrect ? "Correct. Ten points added." : "Answer recorded. Open the learning card to check the source.", focusSelector: "[data-focus-target]" });
     } else if (action === "answer-correctness") {
       const result = submitDecision(content, state, "correctness", actionTarget.dataset.answer);
-      if (result) render({ announce: "Correctness answer recorded. Now identify the source.", focusSelector: ".source-decision" });
+      if (result) render({
+        announce: result.isCorrect
+          ? "Correctness check is correct. Five points added. Now identify the source."
+          : "Correctness check is incorrect. Now identify the source.",
+        focusSelector: ".source-decision",
+      });
     } else if (action === "answer-source") {
       const result = submitDecision(content, state, "source", actionTarget.dataset.answer);
-      if (result) render({ announce: "Source answer recorded. The learning card is ready.", focusSelector: "[data-focus-target]" });
+      if (result) render({
+        announce: result.isCorrect
+          ? "Source check is correct. Five points added. The learning card is ready."
+          : "Source check is incorrect. The learning card is ready.",
+        focusSelector: ".source-feedback",
+      });
     } else if (action === "next-question") {
       advance(content, state);
       render();
