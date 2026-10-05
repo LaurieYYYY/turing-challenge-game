@@ -91,9 +91,14 @@ function learningCard(question) {
 }
 
 function feedback(cue, correct, reveal = "") {
+  const statusLabel = correct ? "Correct choice" : "Incorrect choice";
   return `<div class="answer-feedback ${correct ? "is-correct" : "is-incorrect"}" role="status" tabindex="-1" data-focus-target>
-    <span class="feedback-mark" aria-hidden="true">${correct ? "✓" : "!"}</span>
-    <div><strong>${escapeHtml(cue)}</strong>${reveal ? `<p>${escapeHtml(reveal)}</p>` : ""}</div>
+    <span class="feedback-mark" aria-hidden="true">${correct ? "✓" : "✕"}</span>
+    <div class="feedback-copy">
+      <span class="feedback-label">${statusLabel}</span>
+      <strong>${escapeHtml(cue)}</strong>
+      ${reveal ? `<p>${escapeHtml(reveal)}</p>` : ""}
+    </div>
   </div>`;
 }
 
