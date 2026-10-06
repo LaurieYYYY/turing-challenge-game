@@ -265,7 +265,7 @@ function renderFinal(content, state) {
   return `
     <section class="screen final-screen" aria-labelledby="screen-title">
       <div class="final-rays" aria-hidden="true"><span>★</span></div>
-      <p class="filipino-greeting" lang="fil">Paalam!</p>
+      <p class="filipino-greeting" lang="fil">Ang galing!</p>
       <p class="eyebrow">All three stages complete</p>
       <h1 id="screen-title" tabindex="-1">${escapeHtml(final.title)}</h1>
       <div class="final-score"><strong>${state.score}</strong><span>/ 90</span></div>
