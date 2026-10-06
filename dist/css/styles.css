@@ -767,6 +767,14 @@ a { color: var(--color-cyan-light); }
 
 .final-rays span { color: var(--color-learning); font-size: 3rem; }
 
+.filipino-greeting {
+  margin: 0 0 .55rem;
+  color: var(--color-learning);
+  font: 900 clamp(1.65rem, 4vw, 2.6rem)/1 var(--font-display);
+  letter-spacing: .02em;
+  text-shadow: 3px 3px 0 rgba(5, 16, 43, .8);
+}
+
 .final-score { display: flex; align-items: baseline; gap: .5rem; margin: .4rem 0 1rem; }
 .final-score strong { color: var(--color-learning); font: 900 clamp(4rem, 12vw, 7.5rem)/.9 var(--font-display); }
 .final-score span { color: var(--color-muted); font: 700 1.3rem/1 var(--font-display); }

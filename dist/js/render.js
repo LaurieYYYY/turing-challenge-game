@@ -116,6 +116,7 @@ function renderStart(content) {
   return `
     <section class="screen start-screen" aria-labelledby="screen-title">
       <div class="start-emblem" aria-hidden="true"><span>H</span><span>AI</span></div>
+      <p class="filipino-greeting" lang="fil">Kumusta!</p>
       <p class="eyebrow">AI Detective Mission</p>
       <h1 id="screen-title" tabindex="-1">${escapeHtml(game.title)}</h1>
       <p class="lead">${escapeHtml(game.startScreen.intro)}</p>
@@ -264,6 +265,7 @@ function renderFinal(content, state) {
   return `
     <section class="screen final-screen" aria-labelledby="screen-title">
       <div class="final-rays" aria-hidden="true"><span>★</span></div>
+      <p class="filipino-greeting" lang="fil">Paalam!</p>
       <p class="eyebrow">All three stages complete</p>
       <h1 id="screen-title" tabindex="-1">${escapeHtml(final.title)}</h1>
       <div class="final-score"><strong>${state.score}</strong><span>/ 90</span></div>
