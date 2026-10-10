@@ -40,9 +40,11 @@ body {
   min-height: 100vh;
   color: var(--color-content);
   background:
-    radial-gradient(circle at 18% 12%, rgba(56, 217, 255, 0.17), transparent 30rem),
-    radial-gradient(circle at 82% 88%, color-mix(in srgb, var(--stage-accent) 24%, transparent), transparent 28rem),
-    linear-gradient(145deg, #030b1b 0%, #071a3d 55%, #041127 100%);
+    radial-gradient(ellipse 58% 46% at 8% 10%, rgba(56, 217, 255, 0.3) 0%, rgba(56, 217, 255, 0.1) 42%, transparent 72%),
+    radial-gradient(ellipse 48% 42% at 92% 14%, rgba(155, 93, 229, 0.24) 0%, rgba(128, 90, 213, 0.08) 46%, transparent 74%),
+    radial-gradient(ellipse 52% 48% at 82% 88%, color-mix(in srgb, var(--stage-accent) 30%, transparent) 0%, color-mix(in srgb, var(--stage-accent) 8%, transparent) 48%, transparent 76%),
+    radial-gradient(ellipse 42% 38% at 10% 92%, rgba(24, 183, 177, 0.2) 0%, rgba(24, 183, 177, 0.06) 48%, transparent 76%),
+    linear-gradient(145deg, #020817 0%, #08234c 48%, #06152f 72%, #020b1e 100%);
   overflow-x: hidden;
 }
 
@@ -173,6 +175,8 @@ a { color: var(--color-cyan-light); }
   position: relative;
   padding: clamp(1.4rem, 4vw, 3.5rem);
   background:
+    radial-gradient(circle at 88% 12%, rgba(155, 93, 229, 0.16) 0%, transparent 38%),
+    radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--stage-accent) 14%, transparent) 0%, transparent 42%),
     linear-gradient(135deg, rgba(10, 43, 89, 0.92), rgba(4, 19, 49, 0.96)),
     repeating-linear-gradient(0deg, transparent 0 28px, rgba(56, 217, 255, 0.035) 29px 30px);
   border: 2px solid color-mix(in srgb, var(--stage-accent) 74%, var(--color-cyan));
