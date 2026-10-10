@@ -463,7 +463,7 @@
         {
           "id": "M2",
           "title": "The Barber Puzzle",
-          "puzzle": "A barber shaves every man in town who does not shave himself, and no one else. Will he shave himself?",
+          "puzzle": "A barber shaves every man in town who does not shave himself, and no one else. Will the barber shave himself?",
           "media": {
             "type": "image",
             "path": "assets/images/m2-barber-puzzle.png",
